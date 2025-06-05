@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: 41 14 * * * # Run daily at 2:11 PM UTC
+    - cron: 45 14 * * * # Run daily at 2:15 PM UTC
 jobs:
   build:
 
