@@ -3,6 +3,8 @@ package com.api.filters;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.api.reporting.ExtentReportManager;
+
 import io.restassured.filter.Filter;
 import io.restassured.filter.FilterContext;
 import io.restassured.response.Response;
@@ -27,10 +29,12 @@ public class LoggingFilters implements Filter {
 		logger.info("BASE URI :"+ requestSpec.getBaseUri());
 		logger.info("REQUEST HEADER :"+ requestSpec.getHeaders());
 		logger.info("BODY/PAYLOAD :"+ requestSpec.getBody());
+		ExtentReportManager.logRequest(requestSpec);
 		}
 	public void logResponse(Response response) {
 		logger.info("STATUS CODE :"+ response.getStatusCode());
 		logger.info("REQUEST HEADER :"+ response.getHeaders());
 		logger.info("BODY/PAYLOAD :"+ response.getBody().prettyPrint());
+		ExtentReportManager.logResponse(response);
 	}
 }
